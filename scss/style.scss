@@ -1,0 +1,69 @@
+
+/*
+COLOURS
+--------------------
+Cadet Blue -- #5F9EA0
+
+*/
+
+
+@import "normalize";
+@import "main";
+
+
+$brand-color: lightgrey;
+$spacing: 20px;
+
+body {
+	background: lighten( $brand-color, 30% );
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+a {
+	text-decoration: none;
+}
+.site-header {
+	top: 0;
+	left: 0;
+	position: fixed;
+	height: 50px;
+	width: 100%;
+	background-color: black;
+
+	h3 {
+		text-align: center;
+		color:#fff;
+
+		&:hover {
+			color:white;
+		}
+	}
+	.logo {
+		width:100px - ( $spacing * 2);
+	}
+}
+
+.sidebar-nav {
+	position: fixed;
+	left: -200px;
+	top: 50px;
+	width: 200px;
+	height: 100%;
+	background-color: #eaeaea;
+}
+.sidebar-nav ul li {
+	list-style: none;
+}
+ul li a {
+	border: 1px solid red;
+}
+.site-content {
+	margin: 20px;
+	padding: 20px;
+	position: relative;
+	top: 50px;
+	left: 200px;
+}
+
+.slide-nav {
+	left: 0;
+}
