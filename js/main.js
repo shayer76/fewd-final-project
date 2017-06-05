@@ -14,7 +14,11 @@ When a nav button is clicked
 
 $(document).ready( function(){
 console.log('it works');
-// when a nav button is clicked 2
+// when sidebar-btn is clicked
+	$('#sidebar-btn').click(function() {
+		$('#sidebar-nav').toggleClass('visible');
+		console.log('menu works');
+	});
 
 
 

@@ -409,9 +409,9 @@ template {
   display: none; }
 
 /* 
-Project Name: Blank Template
-Client: Your Client
-Author: Your Name
+Project Name: FEWD
+Client: GA
+Author: Shy Choudhury
 */
 /******************************************
 /* COLOURS
@@ -460,7 +460,8 @@ img {
 /*******************************************/
 body {
   background: white;
-  font-family: "Helvetica Neue", Helvetica, sans-serif; }
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  color: #333333; }
 
 a {
   text-decoration: none; }
@@ -471,7 +472,8 @@ a {
   position: fixed;
   height: 50px;
   width: 100%;
-  background-color: black; }
+  background-color: #333333;
+  z-index: 999; }
   .site-header h3 {
     text-align: center;
     color: #fff; }
@@ -481,27 +483,52 @@ a {
     width: 60px; }
 
 .sidebar-nav {
-  position: fixed;
-  left: -200px;
-  top: 50px;
+  background: #151718;
   width: 200px;
   height: 100%;
-  background-color: #eaeaea; }
+  display: block;
+  position: absolute;
+  left: -200px;
+  top: 50px; }
+  .sidebar-nav ul {
+    margin: 0;
+    padding: 0; }
+    .sidebar-nav ul li {
+      list-style: none; }
+      .sidebar-nav ul li a {
+        background: #1C1E1F;
+        color: #ccc;
+        border-bottom: 1px solid #111;
+        display: block;
+        width: 180px;
+        padding: 10px; }
 
-.sidebar-nav ul li {
-  list-style: none; }
+.sidebar-nav.visible {
+  left: 0;
+  transition: left 0.3s linear; }
 
-ul li a {
-  border: 1px solid red; }
+.sidebar-btn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 15px;
+  cursor: pointer;
+  margin: 20px 20px 20px;
+  position: absolute;
+  left: 200px;
+  top: 0;
+  z-index: 1000; }
+  .sidebar-btn span {
+    height: 1px;
+    background: #111;
+    margin-bottom: 5px;
+    display: block; }
 
 .site-content {
   margin: 20px;
   padding: 20px;
-  position: relative;
+  position: absolute;
   top: 50px;
   left: 200px; }
-
-.slide-nav {
-  left: 0; }
 
 /*# sourceMappingURL=style.css.map */
