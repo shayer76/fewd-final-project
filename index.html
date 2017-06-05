@@ -30,42 +30,51 @@
 				<div id="content-header" class="content-header">
 					<h1>Front End United</h1>
 				</div>
+
 				<div id="summary" class="summary">
 					<h2>Summary</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<div id="summary_totals">
+						<h3>Turnover (£): <span>144,000</span></h3>
+						<h3>Attendance: <span>12,000</span></h3>
+					</div>
+					<!--Div that will hold the dashboard-->
+					<div id="dashboard_summary">
+						<!--Divs that will hold each control and chart-->
+						<div id="filter_summary_chart1"></div>
+						<div id="summary_chart1"></div>
+					</div>
 				</div>
+
 				<div id="turnover" class="turnover">
 					<h2>Turnover</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<!--Div that will hold the dashboard-->
+					<div id="dashboard_turnover">
+						<!--Divs that will hold each control and chart-->
+						<div id="filter_turnover_chart1"></div>
+						<div id="turnover_chart1"></div>
+					</div>
 				</div>
+
 				<div id="attendance" class="attendance">
 					<h2>Attendance</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<!--Div that will hold the dashboard-->
+					<div id="dashboard_attendance">
+					<!--Divs that will hold each control and chart-->
+						<div id="filter_attendance_chart1"></div>
+						<div id="attendance_chart1"></div>
+					</div>
 				</div>
+
 				<div id="schedule" class="schedule">
 					<h2>Schedule</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<!--Div that will hold the dashboard-->
+					<div id="dashboard_schedule">
+					<!--Divs that will hold each control and chart-->
+						<div id="filter_schedule_chart1"></div>
+						<div id="schedule_chart1"></div>
+					</div>
 				</div>
+
 			</main>
 
 			<footer id="site-footer" class="site-footer">
@@ -74,7 +83,10 @@
 
 		</div><!-- .site-container -->
 
-		<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-		<script src="js/main.js"></script>
+
+		<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    	<!--Load the AJAX API-->
+    	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
 	</body>
 </html>
