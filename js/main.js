@@ -25,7 +25,7 @@ google.charts.load('current', {'packages':['corechart', 'controls']});
 google.charts.setOnLoadCallback(drawDashboard);
 
 // Callback that creates and populates a data table,
-// instantiates a dashboard, a range slider and a pie chart,
+// instantiates a dashboard, a range slider and a chart,
 // passes in the data and draws it.
 function drawDashboard() {
 
@@ -35,14 +35,19 @@ function drawDashboard() {
 /******************************************/
   // Create our data table.
   var data_summary = google.visualization.arrayToDataTable([
-    ['Name', 'Donuts eaten'],
-    ['Michael' , 5],
-    ['Elisa', 7],
-    ['Robert', 3],
-    ['John', 2],
-    ['Jessica', 6],
-    ['Aaron', 1],
-    ['Margareth', 8]
+	['Month', 'Turnover', 'Attendance'],
+	[new Date(2016, 05, 01), 15000, 1250],
+	[new Date(2016, 06, 01), 11000, 917],
+	[new Date(2016, 07, 01), 9000, 550],
+	[new Date(2016, 08, 01), 12000, 1000],
+	[new Date(2016, 09, 01), 14000, 1167],
+	[new Date(2016, 10, 01), 14500, 1408],
+	[new Date(2016, 11, 01), 13500, 1125],
+	[new Date(2016, 12, 01), 16500, 1075],
+	[new Date(2017, 01, 01), 15500, 1592],
+	[new Date(2017, 02, 01), 10000, 833],
+	[new Date(2017, 03, 01), 6000, 500],
+	[new Date(2017, 04, 01), 7000, 583]
   ]);
 
   // Create a dashboard.
@@ -51,30 +56,32 @@ function drawDashboard() {
 
   // CHART 1
   // Create a range slider, passing some options
-  var donutRangeSlider = new google.visualization.ControlWrapper({
-    'controlType': 'NumberRangeFilter',
+  var chart1RangeSelector = new google.visualization.ControlWrapper({
+    'controlType': 'DateRangeFilter',
     'containerId': 'filter_summary_chart1',
     'options': {
-      'filterColumnLabel': 'Donuts eaten'
+      'filterColumnLabel': 'Month'
     }
   });
 
-  // Create a pie chart, passing some options
+  // Create a chart, passing some options
   var summary_chart1 = new google.visualization.ChartWrapper({
-    'chartType': 'PieChart',
+    'chartType': 'ColumnChart',
     'containerId': 'summary_chart1',
     'options': {
-      'width': 300,
+      'width': 600,
       'height': 300,
       'pieSliceText': 'value',
-      'legend': 'right'
+      'legend': 'right',
+      'seriesType': 'bars',
+      'series': {1: {type: 'line', targetAxisIndex: 1}}
     }
   });
 
-  // Establish dependencies, declaring that 'filter' drives 'pieChart',
-  // so that the pie chart will only display entries that are let through
+  // Establish dependencies, declaring that 'filter' drives 'summary_chart',
+  // so that the charts will only display entries that are let through
   // given the chosen slider range.
-  dashboard_summary.bind(donutRangeSlider, summary_chart1);
+  dashboard_summary.bind(chart1RangeSelector, summary_chart1);
 
   // Draw the dashboard.
   dashboard_summary.draw(data_summary);
