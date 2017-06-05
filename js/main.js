@@ -14,6 +14,7 @@ When a nav button is clicked
 
 $(document).ready( function(){
 console.log('it works');
+
 // when sidebar-btn is clicked
 	$('#sidebar-btn').click(function() {
 		$('#sidebar-nav').toggleClass('visible');
