@@ -35,7 +35,7 @@ function drawDashboard() {
 /******************************************/
   // Create our data table.
   var data_summary = google.visualization.arrayToDataTable([
-	['Month', 'Turnover', 'Attendance'],
+	['Date', 'Turnover', 'Attendance'],
 	[new Date(2016, 05, 01), 15000, 1250],
 	[new Date(2016, 06, 01), 11000, 917],
 	[new Date(2016, 07, 01), 9000, 550],
@@ -60,7 +60,7 @@ function drawDashboard() {
     'controlType': 'DateRangeFilter',
     'containerId': 'filter_summary_chart1',
     'options': {
-      'filterColumnLabel': 'Month'
+      'filterColumnLabel': 'Date'
     }
   });
 
@@ -69,9 +69,8 @@ function drawDashboard() {
     'chartType': 'ColumnChart',
     'containerId': 'summary_chart1',
     'options': {
-      'width': 600,
-      'height': 300,
-      'pieSliceText': 'value',
+      'width': 900,
+      'height': 500,
       'legend': 'right',
       'seriesType': 'bars',
       'series': {1: {type: 'line', targetAxisIndex: 1}}
@@ -86,54 +85,55 @@ function drawDashboard() {
   // Draw the dashboard.
   dashboard_summary.draw(data_summary);
 
+
 /******************************************/
 // TURNOVER SECTION
 /******************************************/
   // Create our data table.
   var data_turnover = google.visualization.arrayToDataTable([
-    ['Name', 'Donuts eaten'],
-    ['Michael' , 5],
-    ['Elisa', 7],
-    ['Robert', 3],
-    ['John', 2],
-    ['Jessica', 6],
-    ['Aaron', 1],
-    ['Margareth', 8]
+    ['Month', '2016', '2017', 'Forecast'],
+    ['May', 13500, 15000, 14000],
+	['June', 12000, 11000, 12000],
+	['July', 10000, 9000, 11000],
+	['August', 8000, 12000, 13000],
+	['September', 9000, 14000, 11000],
+	['October', 12000, 14500, 12000],
+	['November', 13500, 13500, 13000],
+	['December', 15500, 16500, 16000],
+	['January', 14000, 15500, 13000],
+	['February', 11000, 10000, 12000],
+	['March', 4500, 6000, 5000],
+	['April', 6500, 7000, 6000]
   ]);
 
-  // Create a dashboard.
-  var dashboard_turnover = new google.visualization.Dashboard(
-      document.getElementById('dashboard_turnover'));
+	// CHART 1
+	// Set chart options
+	var turnover_chart1_options = {'legend':'top',
+		'width':900,
+		'height':500};
 
-  // CHART 1
-  // Create a range slider, passing some options
-  var donutRangeSlider = new google.visualization.ControlWrapper({
-    'controlType': 'NumberRangeFilter',
-    'containerId': 'filter_turnover_chart1',
-    'options': {
-      'filterColumnLabel': 'Donuts eaten'
-    }
-  });
+	// Instantiate and draw our chart, passing in some options.
+	var turnover_chart1 = new google.visualization.BarChart(document.getElementById('turnover_chart1'));
+	turnover_chart1.draw(data_turnover, turnover_chart1_options);
 
-  // Create a pie chart, passing some options
-  var turnover_chart1 = new google.visualization.ChartWrapper({
-    'chartType': 'PieChart',
-    'containerId': 'turnover_chart1',
-    'options': {
-      'width': 300,
-      'height': 300,
-      'pieSliceText': 'value',
-      'legend': 'right'
-    }
-  });
+  	// Turnover Table
+	google.charts.load('current', {'packages':['table']});
+	google.charts.setOnLoadCallback(drawTable);
 
-  // Establish dependencies, declaring that 'filter' drives 'pieChart',
-  // so that the pie chart will only display entries that are let through
-  // given the chosen slider range.
-  dashboard_turnover.bind(donutRangeSlider, turnover_chart1);
+	function drawTable() {
+	var data = new google.visualization.DataTable();
+	data.addColumn('string', 'Year');
+	data.addColumn('number', 'Turnover (£)');
+	data.addRows([
+	['2016',  {v: 129500, f: '129,500'}],
+	['2017',   {v:144000,   f: '144,000'}],
+	['Forecast', {v: 138000, f: '138,000'}]
+	]);
 
-  // Draw the dashboard.
-  dashboard_turnover.draw(data_turnover);
+	var table = new google.visualization.Table(document.getElementById('table_div'));
+
+	table.draw(data, {showRowNumber: true, width: '1000px', height: '100%'});
+	}
 
 /******************************************/
 // ATTENDANCE SECTION
