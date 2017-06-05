@@ -140,49 +140,30 @@ function drawDashboard() {
 /******************************************/
   // Create our data table.
   var data_attendance = google.visualization.arrayToDataTable([
-    ['Name', 'Donuts eaten'],
-    ['Michael' , 5],
-    ['Elisa', 7],
-    ['Robert', 3],
-    ['John', 2],
-    ['Jessica', 6],
-    ['Aaron', 1],
-    ['Margareth', 8]
+	['Month', '2016', '2017', 'Forecast'],
+	['May', 1125, 1250, 1166.66666666667],
+	['Jun', 2125, 2166.66666666667, 2166.66666666667],
+	['Jul', 2958.33333333333, 2916.66666666667, 3083.33333333333],
+	['Aug', 3625, 3916.66666666667, 4166.66666666667],
+	['Sep', 4375, 5083.33333333333, 5083.33333333333],
+	['Oct', 5375, 6291.66666666667, 6083.33333333333],
+	['Nov', 6500, 7416.66666666667, 7166.66666666667],
+	['Dec', 7791.66666666667, 8791.66666666667, 8500],
+	['Jan', 8958.33333333333, 10083.3333333333, 9583.33333333333],
+	['Feb', 9875, 10916.6666666667, 10583.3333333333],
+	['Mar', 10250, 11416.6666666667, 11000],
+	['Apr', 10791.6666666667, 12000, 11500]
   ]);
 
-  // Create a dashboard.
-  var dashboard_attendance = new google.visualization.Dashboard(
-      document.getElementById('dashboard_attendance'));
+  	// CHART 1
+	// Set chart options
+	var attendance_chart1_options = {'legend':'top',
+		'width':900,
+		'height':500};
 
-  // CHART 1
-  // Create a range slider, passing some options
-  var donutRangeSlider = new google.visualization.ControlWrapper({
-    'controlType': 'NumberRangeFilter',
-    'containerId': 'filter_attendance_chart1',
-    'options': {
-      'filterColumnLabel': 'Donuts eaten'
-    }
-  });
-
-  // Create a pie chart, passing some options
-  var attendance_chart1 = new google.visualization.ChartWrapper({
-    'chartType': 'PieChart',
-    'containerId': 'attendance_chart1',
-    'options': {
-      'width': 300,
-      'height': 300,
-      'pieSliceText': 'value',
-      'legend': 'right'
-    }
-  });
-
-  // Establish dependencies, declaring that 'filter' drives 'pieChart',
-  // so that the pie chart will only display entries that are let through
-  // given the chosen slider range.
-  dashboard_attendance.bind(donutRangeSlider, attendance_chart1);
-
-  // Draw the dashboard.
-  dashboard_attendance.draw(data_attendance);
+	// Instantiate and draw our chart, passing in some options.
+	var attendance_chart1 = new google.visualization.LineChart(document.getElementById('attendance_chart1'));
+	attendance_chart1.draw(data_attendance, attendance_chart1_options);
 
 
 }
